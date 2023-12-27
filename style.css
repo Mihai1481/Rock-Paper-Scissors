@@ -1,0 +1,57 @@
+body{
+    display: flex;
+    height: 100vh;
+    margin: 0;
+}
+
+.userChoice{
+    display: flex;
+    flex-direction: column;
+    background-color: aqua;
+    justify-content: space-around; 
+    flex: 1;
+
+}
+
+.display{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: rgb(19, 161, 38);
+    align-items: center;
+}
+
+.choice{
+    background-color: #0f67eb;
+    border-radius: 16px;
+    border: 0;
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 24px;
+    width: 25%;
+    max-height: 20%;
+    min-height: 5rem;
+    min-width: 10rem;
+    padding: 16px 20px;
+    text-align: center;
+    margin: auto;
+}
+
+.title, .score, .result{
+    margin: auto;
+}
+
+
+.title{
+
+}
+
+.score{
+
+}
+
+.result{
+
+}
