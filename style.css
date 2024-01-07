@@ -1,57 +1,76 @@
-body{
-    display: flex;
+.selections {
+    background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+    padding: 20px;
+    width: 50%;
     height: 100vh;
-    margin: 0;
-}
-
-.userChoice{
+    box-sizing: border-box;
     display: flex;
-    flex-direction: column;
-    background-color: aqua;
-    justify-content: space-around; 
-    flex: 1;
-
-}
-
-.display{
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    background-color: rgb(19, 161, 38);
+    justify-content: center;
     align-items: center;
 }
 
-.choice{
-    background-color: #0f67eb;
-    border-radius: 16px;
-    border: 0;
+.results {
+    background: linear-gradient(to bottom right, #ff7e5f, #feb47b, #ffef96);
+    padding: 20px;
+    width: 50%;
+    height: 100vh;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.choice {
+    background: linear-gradient(to bottom right, #83a4d4, #b6fbff);
+    border-radius: 50%;
+    border: 2px solid #4d4d4d;
     color: #fff;
-    font-size: 28px;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.5;
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.choice:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.scoreText {
+    font-size: 24px;
     font-weight: 700;
-    line-height: 24px;
-    width: 25%;
-    max-height: 20%;
-    min-height: 5rem;
-    min-width: 10rem;
-    padding: 16px 20px;
+    margin-top: 20px;
     text-align: center;
-    margin: auto;
+    color: #4d4d4d;
 }
 
-.title, .score, .result{
-    margin: auto;
+.score {
+    font-size: 48px;
+    font-weight: 900;
+    color: #c94c4c;
+    text-align: center;
 }
 
-
-.title{
-
-}
-
-.score{
-
-}
-
-.result{
-
+.roundResult {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 10px;
+    text-transform: uppercase;
+    color: #4d4d4d;
+    text-align: center;
 }

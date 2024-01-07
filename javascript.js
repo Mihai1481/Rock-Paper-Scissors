@@ -1,5 +1,5 @@
-function getComputerChoice(){
-    let options  = ["rock", "paper", "scissors"];
+function computerChoice(){
+    let options  = ["Rock", "Paper", "Scissors"];
     let num = Math.floor(Math.random()*3);
 
    
@@ -8,59 +8,75 @@ function getComputerChoice(){
     
 }
 
-let userScore = 0;
+let playerScore = 0;
 let computerScore = 0;
-let playerSelection = "";
-let computerSelection = "";
 
-let gameStats = true;
+const roundResult = document.querySelector('.roundResult')
+const score = document.querySelector('.score')
 
 
-while(gameStats){
 
-playerSelection = prompt("Introdu ce alegi");
-// console.log(playerSelection);
 
-computerSelection = getComputerChoice();
-// console.log(computerSelection)
 
-playRound(playerSelection,computerSelection)
-// console.log(userScore);
-// console.log(computerScore);
 
-if (userScore == 5) {
-    gameStats = false;
-    alert("Congrats! You Won)");
+function playRound(playerSelection = '', computerChoice){
+    if (playerSelection === computerChoice){
+        roundResult.textContent =`A draw! No winners this time.`,
+        score.textContent = `Player ${playerScore} - Computer ${computerScore}`;
+
+        }
+    else if (
+             ((playerSelection === "Rock") && (computerChoice === "Scissors")) || 
+             ((playerSelection === "Paper") && (computerChoice === "Rock")) ||
+             ((playerSelection === "Scissors") && (computerChoice === "Paper"))
+            ){
+                playerScore ++;
+                score.textContent = `Player ${playerScore} - Computer ${computerScore}`;
+                roundResult.textContent =  `Victory! Your ${playerSelection} triumphs!`;
+                if( playerScore === 5){
+                    endGame();
+                }
+
+            }    
+    else if (
+                ((playerSelection === "Scissors") && (computerChoice === "Rock")) || 
+                ((playerSelection === "Rock") && (computerChoice === "Paper")) ||
+                ((playerSelection === "Paper") && (computerChoice === "Scissors"))
+               ){
+                   computerScore ++;
+                   score.textContent = `Player ${playerScore} - Computer ${computerScore}`;
+                   roundResult.textContent = `The computer's ${computerChoice} outmatched your ${playerSelection}.`
+                   if ( computerScore === 5){
+                    endGame();
+                   }
+   
+               }        
+}
+function endGame() {
+    buttons.forEach(disableButton);
+    if (playerScore === 5) {
+        roundResult.textContent =`You outsmarted the computer! You win!`;
+
+    } else {
+        roundResult.textContent =`Defeat! You were beaten by the computer!`;
+
+    }
+
+    const refresh = document.querySelector('.scoreText');
+    refresh.textContent = 'Reset';
 }
 
-if ( computerScore == 5){
-    gameStats = false;
-    alert("HAHA! You lost");
-}
-
+function disableButton(item) {
+    item.disabled = true;
+    item.style.opacity = 0.3;
 }
 
 
-function playRound(){
- if(playerSelection.toLowerCase() === computerSelection)
-    alert("It s draw");
-else if((playerSelection.toLowerCase() === "rock") && (computerSelection === "scissors"))
-    {userScore += 1;    
-    alert("You won! Rock beats scissors");}
-else if((playerSelection.toLowerCase() === "rock") && (computerSelection === "paper"))
-    {computerScore +=1;     
-    alert("You lose! Paper beats rock");}
-else if((playerSelection.toLowerCase() === "scissors") && (computerSelection === "paper"))
-    {userScore +=1;
-    alert("You won! Scissors beats paper");}
-else if((playerSelection.toLowerCase() === "scissors") && (computerSelection === "rock"))
-    {computerScore +=1;
-    alert("You lose! Rock beats scissors");}
-else if((playerSelection.toLowerCase() === "paper") && (computerSelection === "rock"))
-    {userScore +=1;
-    alert("You won! Paper beats rock");}
-else if((playerSelection.toLowerCase() === "paper") && (computerSelection === "scissors"))
-    {computerScore +=1;
-    alert("You lose! Scissors beats paper");}
-}
+const buttons = document.querySelectorAll('.choice');
+
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+   playRound(button.textContent , computerChoice());
+  });
+});
 
